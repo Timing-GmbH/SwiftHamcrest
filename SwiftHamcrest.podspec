@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
                      "René Pirringer" => "rene@openbakery.org" }
 
   s.ios.deployment_target = "11.0"
-  s.osx.deployment_target = "11"
+  s.osx.deployment_target = "10.15"
   s.tvos.deployment_target = "11.0"
 
   s.module_name  = "Hamcrest"
