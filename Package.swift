@@ -11,7 +11,10 @@ let package = Package(
         .library(name: "HamcrestSwiftTesting", targets: ["HamcrestSwiftTesting"])
     ],
     dependencies: [
-        .package(url: "https://github.com/swiftlang/swift-syntax.git", from: "600.0.0-latest")
+        // The wide range lets consumers resolve to swift-syntax 603+, which has prebuilt binaries
+        // on Swift 6.3 toolchains (avoiding slow source builds), while staying compatible with
+        // consumers still pinned to 600.
+        .package(url: "https://github.com/swiftlang/swift-syntax.git", "600.0.0-latest"..<"604.0.0")
     ],
     targets: [
         .target(
@@ -40,10 +43,10 @@ let package = Package(
 
         .target(
             name: "HamcrestSwiftTesting",
+            // No swift-syntax product dependencies here: a non-macro target depending on swift-syntax
+            // disables SwiftPM's prebuilt swift-syntax for the entire package graph of every consumer.
             dependencies: [
-                "HamcrestSwiftTestingMacros",
-                .product(name: "SwiftSyntaxMacros", package: "swift-syntax"),
-                .product(name: "SwiftCompilerPlugin", package: "swift-syntax")
+                "HamcrestSwiftTestingMacros"
             ],
             path: "SwiftTesting",
             sources: [

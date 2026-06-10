@@ -6,8 +6,6 @@
 //
 import Foundation
 import Hamcrest
-import SwiftSyntax
-import SwiftSyntaxMacros
 import Testing
 
 @_disfavoredOverload public func checkMatcher<T>(
