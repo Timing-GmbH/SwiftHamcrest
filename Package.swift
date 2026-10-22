@@ -12,9 +12,9 @@ let package = Package(
     ],
     dependencies: [
         // The wide range lets consumers resolve to swift-syntax 603+, which has prebuilt binaries
-        // on Swift 6.3 toolchains (avoiding slow source builds), while staying compatible with
+        // on Swift 6.3 and 6.4 toolchains (avoiding slow source builds), while staying compatible with
         // consumers still pinned to 600.
-        .package(url: "https://github.com/swiftlang/swift-syntax.git", "600.0.0-latest"..<"604.0.0")
+        .package(url: "https://github.com/swiftlang/swift-syntax.git", "600.0.0-latest"..<"605.0.0")
     ],
     targets: [
         .target(
